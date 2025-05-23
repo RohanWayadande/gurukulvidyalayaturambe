@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background: linear-gradient(to right, #ffcc80, #ffb74d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            background: #fff3e0;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 6px 15px rgba(255, 152, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+        }
+        .image-container {
+            margin-bottom: 25px; 
+        }
+        
+        img {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .download-btn {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 12px 25px;
+            text-decoration: none;
+            color: white;
+            background: #eae5de;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0px 4px 10px rgba(255, 152, 0, 0.3);
+        }
+        .download-btn:hover {
+            background: #e65100;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="images\form1.jpg" alt="Image 1">
+              <img src="images\form2.jpg" alt="Image 2">
+            <br>
+            <a href="D:\web-gurukul\web-gurukul\form.pdf" download="sammatipatra.pdf" target="_blank" class="download-btn">Download</a>
+        </div>
+
+    </div>
+    <a href="index.html" class="button">मुख्य पृष्ठावर परत जा</a>
+</body>
+</html>

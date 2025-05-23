@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> गुरुकुल</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--primary-color);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Mobile Menu Toggle */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            margin: 5px;
+            background-color: white;
+            transition: all 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            animation: slideDown 0.3s ease-out;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 1rem;
+            display: block;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+/* Image Slider */
+.slider-container {
+    margin-top: 60px;
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider {
+    display: flex;
+    height: 100%;
+    animation: slide 20s infinite; /* Increased duration for more images */
+}
+
+.slide {
+    flex: 1 0 100%; /* Each slide takes full width */
+    height: 100%;
+    min-width: 100%; /* Ensure slides stay full-width */
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes slide {
+    0%, 15% { transform: translateX(0); }
+    20%, 35% { transform: translateX(-100%); }
+    40%, 55% { transform: translateX(-200%); }
+    60%, 75% { transform: translateX(-300%); }
+    80%, 95% { transform: translateX(-400%); }
+    100% { transform: translateX(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .slider-container {
+        height: 300px;
+    }
+
+    .slide img {
+        object-fit: cover;
+        height: 300px; /* Adjusting height for small screens */
+    }
+}
+
+
+        /* Mission Section */
+        .mission {
+            padding: 4rem 2rem;
+            background: #f9f9f9;
+            text-align: center;
+        }
+
+        .mission h2 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .mission-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Activities Section */
+        .activities {
+            padding: 4rem 2rem;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .activities h2 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        .activity-blocks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+
+footer {
+    background: var(--primary-color);
+    color: white;
+    padding: 2rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--secondary-color);
+}
+
+.quick-links a {
+    color: white;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.quick-links a:hover {
+    color: var(--secondary-color);
+}
+
+/* Styling for Map Container */
+.map-container {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.map-container iframe {
+    width: 100%;
+    max-width: 600px;
+    height: 450px;
+    border: 0;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .map-container iframe {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+
+
+
+.activity-block {
+    background-color: #3498db;
+    padding: 0; /* Remove padding to avoid extra spacing */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 100%;
+    overflow: hidden; /* Ensures no overflow outside the block */
+}
+
+.activity-block img {
+    width: 100%;  /* Makes sure image covers full width */
+    height: 100%; /* Makes sure image covers full height */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+
+        .activity-block:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .quick-links a {
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            text-decoration: none;
+            transition: color 0.3s;
+            
+        }
+
+        .quick-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background-color: var(--primary-color);
+                position: absolute;
+                top: 60px;
+                left: 0;
+                padding: 1rem;
+            }
+
+            .nav-links a {
+                padding: 1rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .slider-container {
+                height: 300px;
+            }
+
+            .slide {
+                font-size: 1.5rem;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+
+
+
+
+
+
+
+
+        /*   map */
+
+        footer {
+    background: var(--primary-color);
+    color: white;
+    padding: 2rem;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligning footer content to the left */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    width: 100%;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--secondary-color);
+}
+
+.quick-links a {
+    color: white;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.quick-links a:hover {
+    color: var(--secondary-color);
+}
+
+/* Styling for Map Container */
+.map-container {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align map content to the left */
+    width: 100%; /* Ensuring it spans the full width */}
+
+
+.map-container iframe {
+    width: 300px; /* Make the map smaller */
+    height: 250px; /* Adjusting height for a smaller map */
+    border: 0;
+}
+
+/* Title for map */
+.map-container h3 {
+    margin-bottom: 1rem;
+    color: white;
+    text-align: left; /* Align title to the left */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .map-container iframe {
+        width: 100%; /* Make the map take full width on smaller screens */
+        height: 200px; /* Adjusting height on small screens */
+    }
+}
+
+
+
+.result-images {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        flex-wrap: wrap; /* Ensures responsiveness */
+    }
+
+    .image-container {
+        flex: 1;
+        max-width: 45%; /* Adjusting width */
+        text-align: center;
+    }
+
+    .image-container img {
+        width: 100%;
+        max-width: 100%; /* Ensures responsiveness */
+        border-radius: 5px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 768px) {
+        .result-images {
+            flex-direction: column;
+        }
+
+        .image-container {
+            max-width: 90%; /* Adjust width for smaller screens */
+        }
+    }
+
+    .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-container img {
+            height: 50px;
+            width: auto;border-radius: 50%;
+        }
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+
+        :root {
+    --primary-color: #FF5722;  /* Deep Orange */
+    --secondary-color: #FF9800;  /* Vibrant Orange */
+    --accent-color: #FFC107;  /* Amber */
+}
+
+/* Navigation */
+nav {
+    background: var(--primary-color);
+}
+
+.nav-links a:hover {
+    color: var(--secondary-color);
+}
+
+/* Dropdown */
+.dropdown-content a:hover {
+    background-color: black; /*var(--secondary-color);*/
+}
+
+/* Mission Section */
+.mission h2 {
+    color: var(--primary-color);
+}
+
+/* Activities Section */
+.activity-block {
+    background-color: var(--secondary-color);
+}
+
+/* Footer */
+footer {
+    background: var(--primary-color);
+}
+
+.social-links a:hover,
+.quick-links a:hover {
+    color: var(--secondary-color);
+}
+
+/* Cards */
+.card {
+    border: 2px solid var(--secondary-color);
+}
+
+/* Results Section */
+.image-container img {
+    border: 2px solid var(--secondary-color);
+}
+
+/* Mobile Menu */
+.nav-links {
+    background-color: var(--primary-color);
+}
+
+/* Hover Effects */
+.card:hover {
+    box-shadow: 0 6px 12px rgba(255, 87, 34, 0.2);
+}
+
+.activity-block:hover {
+    box-shadow: 0 4px 8px rgba(255, 152, 0, 0.3);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-container">
+            <img src="images\logo1.jpg" alt="Academy Logo">
+            <div class="logo"> गुरुकुल विद्यालय</div>
+        </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div>  </div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="nav-links">
+                <div class="dropdown">
+                    <a href="#">
+                        आमच्याबद्दल ▼</a>
+                    <div class="dropdown-content">
+                        <a href="about.html">आमच्याबद्दल</a>
+                        <a href="teachers.html">शिक्षक वर्ग</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="#">विद्यार्थ्यांसाठी ▼</a>
+                    <div class="dropdown-content">
+                       
+                        <a href="exams.html">परीक्षा</a>
+                        <a href="timetable.html">वेळापत्रक</a>
+                        <a href="prarthana.html">प्रार्थना</a>
+                     
+
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="#">प्रवेश ▼</a>
+                    <div class="dropdown-content">
+                        <a href="admission.html">प्रवेश अर्ज</a>
+                    </div>
+                </div>
+
+             <!--   <div class="dropdown">
+                    <a href="events.html">कार्यक्रम</a>
+                </div> -->
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Image Slider -->
+    <div class="slider-container">
+        <div class="slider">
+              <div class="slide"><img src="images/i21.jpg"> </div>
+            <div class="slide"><img src="images/i2.jpg"> </div>
+            <div class="slide"><img src="images/i1.jpg"> </div>
+            <div class="slide"><img src="images/i13.jpg"> </div>
+            <div class="slide"><img src="images/i6.jpg"> </div>
+      
+            <div class="slide"><img src="images/i7.jpg"> </div>
+
+        </div>
+    </div>
+
+    <!-- Mission Section -->
+    <section class="mission">
+        <h2>आमचे ध्येय आणि उद्दिष्टे</h2>
+        <div class="mission-cards">
+            <div class="card">
+                <h3>शैक्षणिक उत्कृष्टता</h3>
+                <p>विद्यार्थ्यांना अभ्यासक्रमातील विषय व्यवस्थित शिकवणे. 
+                    विद्यार्थ्यांना परीक्षांमध्ये चांगले गुण मिळविण्यासाठी मदत करणे. 
+                    विद्यार्थ्यांना नवीन ज्ञान आणि कौशल्ये शिकण्यास प्रोत्साहित करणे. </p>
+            </div>
+            <div class="card">
+                <h3>सांस्कृतिक विकास</h3>
+                <p>विद्यार्थ्यांना विविध संस्कृती आणि परंपरांची माहिती देणे. 
+                    विद्यार्थ्यांना सांस्कृतिक कार्यक्रमांमध्ये सहभागी होण्यास प्रोत्साहित करणे. </p>
+            </div>
+            <div class="card">
+                <h3>समुदाय प्रतिबद्धता</h3>
+                <p>विद्यार्थ्यांना एकत्र काम करण्याची आणि संवाद साधण्याची क्षमता वाढवणे. 
+                    विद्यार्थ्यांना सामाजिक समस्यांवर विचार करण्यास मदत करणे. 
+                    विद्यार्थ्यांना सामाजिक कार्यात सक्रिय भूमिका घेण्यास प्रोत्साहित करणे. </p>
+            </div>
+        </div>
+
+
+        <div class="mission-cards">
+            <div class="card">
+                <h3>सर्वांगीण विकासः </h3>
+                <p>विद्यार्थ्यांचा शारीरिक, मानसिक, सामाजिक आणि भावनिक विकास साधणे.  </p>
+            </div>
+    
+            <div class="card">
+                <h3>आदर्श नागरिकः  </h3>
+                <p>विद्यार्थ्यांना नैतिक मूल्ये आणि विचारसरणी शिकवणे, जेणेकरून ते चांगले आणि जबाबदार नागरिक बनतील.  </p>
+            </div>
+            <div class="card">
+                <h3>कौशल्ये विकासः  </h3>
+                <p>विद्यार्थ्यांना विविध कला, क्रीडा आणि इतर उपक्रमांमध्ये सहभागी करून त्यांचे कौशल्ये विकसित करणे. </p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="result-images">
+        <div class="image-container">
+            <img src="images/gurukul pamphlet.jpg" alt="Image 1">
+            <img src="D:\web-gurukul\web-gurukul\gurukul pamphlet 1.jpg" alt="Image 2">
+        </div>
+    </section>
+
+
+
+    <!-- Activities Section -->
+    <section class="activities">
+        <h2>आमचे उपक्रम</h2>
+        <div class="activity-blocks">
+            <div class="activity-block"><img src="images/i15.jpg"> </div>
+            <div class="activity-block"><img src="images/i16.jpg"> </div>
+            <div class="activity-block"><img src="images/i4.jpg"> </div>
+            <div class="activity-block"><img src="images/i12.jpg"> </div>
+
+        </div>
+    </section>
+
+
+    
+
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3></h3>
+                <p><i class="fas fa-map-marker-alt"></i>गारगोटी रोड, तुरंबे, तालुका - राधानगरी , जिल्हा - कोल्हापूर</p><br>
+                <p>कुंभार सर- +91 9665461734  <i class="fas fa-phone"></i></p><br>
+                <p>प्रदीप क्षीरसागर सर - +91 7264032517 <i class="fas fa-phone"></i></p><br>
+             
+                
+            </div>
+            <div class="social-links">
+                <h3>Follow Us</h3>
+                <a style="text-decoration: none;color: white;" href="#"><i class="fab fa-facebook"></i> फेसबुक</a>  <br>
+               <a style="text-decoration: none;color: white;" href="https://www.instagram.com/gurukul_vidyalaya_turambe"><i class="fab fa-instagram"></i> इंस्टाग्राम</a><br>
+            </div>
+            <div class="quick-links">
+                <h3>Quick Links</h3> <br>
+                <a href="#">मुख्यपृष्ठ</a>  <br> <br>
+                <a href="about.html"> विषयी</a>  <br><br>
+                <a href="admission.html">प्रवेश प्रक्रिया</a>  <br><br>
+                <a href="exams.html">अकॅडमिक्स (शैक्षणिक माहिती)</a> <br><br>
+                <a href="events.html">कार्यक्रम</a> <br><br>
+            </div>
+        </div>
+    <div class="map-container">
+    <h3>Our Location</h3>
+    <iframe 
+        src="https://www.google.com/maps?q=16.2723,74.1448&z=15&output=embed"
+        width="600" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy">
+    </iframe>
+</div>
+
+
+    </footer>
+    
+
+   
+
+   
+    
+    <script>
+
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>
