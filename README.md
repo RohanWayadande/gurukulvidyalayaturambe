@@ -1,2 +1,0 @@
-# gurukulvidyalayaturambe
-gurukulvidyalaya web
